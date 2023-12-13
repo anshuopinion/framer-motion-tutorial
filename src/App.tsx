@@ -1,17 +1,16 @@
-import { Variants, motion } from "framer-motion";
-import { FadeInAnimation } from "./components/FadeTextAnimation";
+import { motion, Variants } from "framer-motion";
 
-const defaultAnimations: Variants = {
+const fadeInUpAnimation: Variants = {
   hidden: {
     opacity: 0,
     y: 100,
   },
-  visible: {
+  show: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 2,
-      staggerChildren: 0.8,
+      staggerChildren: 0.3,
+      duration: 1.5,
     },
   },
 };
@@ -20,26 +19,28 @@ const App = () => {
   return (
     <div className="grid place-items-center h-screen">
       <motion.div
-        className="flex justify-center text-center flex-col gap-4 py-16"
         initial="hidden"
-        animate="visible"
-        variants={defaultAnimations}
+        animate="show"
+        variants={fadeInUpAnimation}
+        className="flex justify-center text-center flex-col gap-4"
       >
-        <FadeInAnimation variants={defaultAnimations}>
-          <p>MONITOR. ALERT. AI DIAGNOSTICS REPORT.</p>
-        </FadeInAnimation>
-        <FadeInAnimation variants={defaultAnimations}>
-          <h1 className=" linear__text__gradient text-4xl font-extrabold leading-10 tracking-tight  sm:text-6xl sm:leading-none md:text-8xl">
-            Get downtime <br />
-            AI Diagnostics to help you <br />
-            build better apps
-          </h1>
-        </FadeInAnimation>
-        <FadeInAnimation variants={defaultAnimations}>
-          <p className="text-base text-gray-500 md:text-lg">
-            Join the mailing list for early access to the alpha release
-          </p>
-        </FadeInAnimation>
+        <motion.p variants={fadeInUpAnimation}>
+          MONITOR. ALERT. AI DIAGNOSTICS REPORT.
+        </motion.p>
+        <motion.h1
+          variants={fadeInUpAnimation}
+          className=" linear__text__gradient text-4xl font-extrabold leading-10 tracking-tight  sm:text-6xl sm:leading-none md:text-8xl"
+        >
+          Get downtime <br />
+          AI Diagnostics to help you <br />
+          build better apps
+        </motion.h1>
+        <motion.p
+          variants={fadeInUpAnimation}
+          className="text-base text-gray-500 md:text-lg"
+        >
+          Join the mailing list for early access to the alpha release
+        </motion.p>
       </motion.div>
     </div>
   );
